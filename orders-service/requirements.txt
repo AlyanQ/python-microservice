@@ -1,0 +1,9 @@
+asyncpg==0.26.0
+databases[asyncpg]==0.6.1
+fastapi==0.85.0
+SQLAlchemy==1.4.41
+uvicorn==0.18.3
+httpx==0.11.1
+uuid==1.30
+psycopg2-binary==2.9.3
+fastapi-pagination==0.10.0

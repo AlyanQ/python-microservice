@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  order_service:
+    build: ./orders-service
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./orders-service/:/app/
+    ports:
+      - 8001:8000
+    environment:
+      - DATABASE_URI=postgresql://postgres:123@order_db/order_db
+
+  order_db:
+    image: postgres:12.1-alpine
+    volumes:
+      - postgres_data_order:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=order_db
+
+volumes:
+  postgres_data_order:
