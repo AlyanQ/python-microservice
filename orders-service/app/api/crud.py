@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List
-from app.api.models import GetOrder, PostOrder, UpdateOrder, DeleteOrder, DisplayOrder
+from app.api.models import PostOrder, UpdateOrder, DisplayOrder
 from app.api.db import database, orders
 
 

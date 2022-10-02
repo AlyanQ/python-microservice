@@ -1,13 +1,12 @@
-from typing import List
-from fastapi import Header, APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException
 from uuid import uuid4
 from datetime import datetime
-from fastapi_pagination import Page, add_pagination, paginate, LimitOffsetPage
+from fastapi_pagination import add_pagination, paginate, LimitOffsetPage
 
-from app.api.models import GetOrder, PostOrder, UpdateOrder, DeleteOrder, DisplayOrder
+from app.api.models import PostOrder, UpdateOrder, DisplayOrder
 from app.api import crud
-orders = APIRouter()
 
+orders = APIRouter()
 
 @orders.get('/', response_model=LimitOffsetPage[DisplayOrder])
 async def get_all_orders():
@@ -51,7 +50,7 @@ async def update_order(order_id: str, payload: UpdateOrder):
 
     return updated_order
 
-
+# Delete an order
 @orders.delete('/{order_id}')
 async def delete_order(order_id: str):
     order = await crud.get_order(order_id)

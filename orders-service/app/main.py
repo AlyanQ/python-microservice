@@ -1,9 +1,6 @@
 import time
-from typing import List
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
 from fastapi_pagination import add_pagination
-from uuid import uuid4
-from datetime import datetime
 
 from app.api.db import metadata, database, engine
 from app.api.orders import orders
